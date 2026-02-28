@@ -1,18 +1,16 @@
 #include <stdio.h>
 #include <string.h>
-int fr=-1;
+int fr=0;
 int rear=0;
 int queue[100000];
+
+//일반적인 선형 큐에서 front == rear이면 비어있는 상태
 int empty(){
-    if(fr==-1&&rear==0){ //원형 큐일때??
-        return 1;
-    }
-    else{
-        return 0;
-    }
+    return fr==rear;
 }
+
 int size(){
-    return rear-front;
+    return rear-fr;
 }
 
 void push(int x){
@@ -23,14 +21,7 @@ int pop(){
         return -1;
     }
     else{
-        int e=queue[fr+1];
-        for(int i=fr+1;i<=fr+size;i++){
-            queue[i]=queue[i+1];
-            //fr    rear
-            //-1 0 1 2
-            rear--;
-        }
-        return e;
+        return queue[fr++];
     }
 }
 
@@ -39,7 +30,7 @@ int front(){
         return -1;
     }
     else{
-        return queue[fr+1];
+        return queue[fr];
     }
 }
 
@@ -48,7 +39,7 @@ int back(){
         return -1;
     }
     else{
-        return queue[rear];
+        return queue[rear-1]; // rear는 다음 위치를 가리키므로 -1
     }
 }
 int main(void){
@@ -56,10 +47,10 @@ int main(void){
     scanf("%d", &N);
     for(int i=0;i<N;i++){
         char str[10];
-        scanf("%s", str)
+        scanf("%s", str);
         if(strcmp(str, "push")==0){
             int x;
-            scanf("%d", x);
+            scanf("%d", &x);
             push(x);
         }
         else if(strcmp(str, "pop")==0){
