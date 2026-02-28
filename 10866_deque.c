@@ -4,56 +4,58 @@ int fr;
 int ba;
 int deque[10000];
 
-void empty(){
+int empty(){
     return fr==ba;
 }
 
-int push_front(int x){
+void push_front(int x){
     if(fr==0){
-        for(int i=ba-1;i>fr;i--){
+        for(int i=ba-1;i>=fr;i--){
             deque[i+1]=deque[i];
         }
         deque[fr]=x;
+        ba++;
     }
     else deque[--fr]=x;
 }
 
-int push_back(int x){
-    if(ba==9999){
+void push_back(int x){
+    if(ba==10000){
         for(int i=fr;i<ba;i++){
             deque[i-1]=deque[i];
         }
-        deque[ba]=x;
+        deque[ba-1]=x;
+        fr--;
     }
-    else deque[++ba]=x;
+    else deque[ba++]=x;
 }
 
-void pop_front(){
+int pop_front(){
     if(empty()) return -1;
     else{
         return deque[fr++];
     }
 }
 
-void pop_back(){
+int pop_back(){
     if(empty()) return -1;
     else{
-        return deque[ba--];
+        return deque[--ba]; // ba는 항상 다음 빈칸을 가리키므로 --ba 위치가 마지막 데이터
     }
 }
 
-void size(){
+int size(){
     return ba-fr;
 }
 
-void front(){
+int front(){
     if(empty()) return -1;
     else{
         return deque[fr];
     }
 }
 
-void back(){
+int back(){
     if(empty()) return -1;
     else{
         return deque[ba-1];
@@ -64,6 +66,7 @@ int main(void){
     int N;
     scanf("%d", &N);
     for(int i=0;i<N;i++){
+        char str[20];
         scanf("%s", str);
         if(strcmp(str,"push_front")==0){
             int x;
