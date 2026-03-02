@@ -28,7 +28,7 @@ void push_back(int x){
         fr--;
     }
     else deque[ba++]=x;
-}
+}   
 
 int pop_front(){
     if(empty()) return -1;
