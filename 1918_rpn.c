@@ -1,42 +1,50 @@
 //괄호 -> 곱 나누기 -> 합차
 #include <stdio.h>
-voidfbracket(char *rpn){
-    while(*(rpn+i)!=')'){
-        int i=0;
-        if(rpn+i){
-            mulend()
-        }
-        else{
-            sumsub()
-        }
+#include <string.h>
+char stack[101];
+int top=-1;
+int cal(char a){
+    if(a=='('||a==')') return 0;
+    else if(a=='*'||a=='/') return 1;
+    else if(a=='+'||a=='-') return 2;
+}
+int peak(){
+    return stack[top];
+}
+void pop(){
+    printf("%c", stack[top--]);
+}
 
-        i++;
-    }
+void push(char a){
+    stack[++top]=a;
 }
-void mulind(char *rpn){
-    if((){
-        bracket();
-    }
-    else{
-        print
-    }
 
-}
-void sumsub(char *rpn){
-    
-}
 int main(void){
     char rpn[101];
-    scan()
-    for(int i=0;rpn[i]!=\n;i++){
-        if(A<=rpn[i]&&rpn<=Z[i]){
-            printf("%c", rpn[i])
+    scanf("%s", rpn);
+
+    for(int i=0;rpn[i]!='\0';i++){
+
+        if('A'>=rpn[i]||'Z'<=rpn[i]){
+            printf("%c", rpn[i]);
+        }
+        else if(rpn[i]=='('){
+            while(rpn[i]!=')'){
+                pop();
+            }   
+            top--;
+        }
+        else if(cal(rpn[i])>cal(peak())){
+            push(rpn[i]);
         }
         else{
-            if(rpn[i]=='('){
-                bracket(&rpn[i]);
-            }
+            pop();
         }
     }
+
+    while(top!=-1){
+        pop();
+    }
+    
     return 0;
 }
