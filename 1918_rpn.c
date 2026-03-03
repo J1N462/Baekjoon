@@ -7,6 +7,7 @@ int cal(char a){
     if(a=='('||a==')') return 0;
     else if(a=='*'||a=='/') return 1;
     else if(a=='+'||a=='-') return 2;
+    return 0;
 }
 int peak(){
     return stack[top];
@@ -25,21 +26,32 @@ int main(void){
 
     for(int i=0;rpn[i]!='\0';i++){
 
-        if('A'>=rpn[i]||'Z'<=rpn[i]){
+        //피연산자
+        if('A'<=rpn[i] && 'Z'>=rpn[i]){
             printf("%c", rpn[i]);
         }
-        else if(rpn[i]=='('){
-            while(rpn[i]!=')'){
+
+        // 2. '(' → 스택에 push
+        else if(rpn[i] == '('){
+            push('(');
+        }
+
+        // )만나면 다 pop()
+        else if(rpn[i]==')'){
+            while(top != -1 && stack[top]!='('){
                 pop();
             }   
             top--;
         }
-        else if(cal(rpn[i])>cal(peak())){
+
+        //연산자
+        else{
+            while( top != -1 && peak() != '(' && cal(peak()) <= cal(rpn[i])){
+                pop();
+            }
             push(rpn[i]);
         }
-        else{
-            pop();
-        }
+       
     }
 
     while(top!=-1){
