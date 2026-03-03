@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-float stack[101]; //피연산자 스택
+double stack[101]; //피연산자 스택
 int top=-1;
 
-void push(int x){
-    stack[++top]=(float)x;
+void push(double x){
+    stack[++top]=x;
 }
-int pop(){
+double pop(){
     return stack[top--];
 }
 int main(void){
@@ -30,27 +30,24 @@ int main(void){
             push(a[str[i]-'A']);
         }
         else{
-            float f=0;
+            double r = pop();
+            double l = pop();
             if(str[i]=='+'){
-                f=pop()+pop();
-                push(f);
+                push(l+r);
             }
             else if(str[i]=='-'){
-                f=pop()-pop();
-                push(f);
+                push(l-r);
             }
             else if(str[i]=='*'){
-                f=pop()*pop();
-                push(f);
+                push(l*r);
             }
             else if(str[i]=='/'){
-                f=pop()/pop();
-                push(f);
+                push(l/r);
             }
         }
 
     }
 
-    printf("%.2f", stack[top]);
+    printf("%.2f\n", stack[top]);
     return 0;
 }
