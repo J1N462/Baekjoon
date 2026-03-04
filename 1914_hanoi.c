@@ -1,4 +1,10 @@
 #include <stdio.h>
+long long hanoi_cnt(int N){
+    if(N == 1)
+        return 1;
+    return 2 * hanoi_cnt(N-1) + 1;
+}
+
 void hanoi(int from, int tmp, int to, int N){
 
     if(N==1){
@@ -16,6 +22,9 @@ int main(void){
     int N;
     scanf("%d", &N);
 
+    long long total = hanoi_cnt(N);
+    printf("%lld\n", total);
+    
     if(N<=20){
         hanoi(1,2,3,N); 
     }
