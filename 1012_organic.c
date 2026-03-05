@@ -1,11 +1,30 @@
+/*
+if(범위 밖) return;
+if(이미 방문했으면) return;
+
+방문 처리
+
+DFS(상)
+DFS(하)
+DFS(좌)
+DFS(우)
+*/
+
 #include <stdio.h>
 int A[50][50];
-void clear(int * a, int m, int n, int N, int M){
-    if(n-1>=0) {A[n-1][m]=0; clear(&A[n-1][m], n-1, m,N,M);}
-    if(n+1<N) {A[n+1][m]=0; clear(&A[n+1][m], n+1, m,N,M);}
-    if(m+1>=0) {A[n][m+1]=0; clear(&A[n][m+1], n, m+1,N,M);}
-    if(m-1<M) {A[n][m-1]=0; clear(&A[n][m-1], n, m-1,N,M);}
-    return;
+void clear(int n, int m, int N, int M){
+    if(n<0 || n>=N || m<0 || m>=M)
+         return;
+    
+    if(A[n][m]==0)
+        return;
+
+    A[n][m]=0;
+
+    clear(n-1, m,N,M);
+    clear(n+1, m,N,M);
+    clear(n, m-1,N,M);
+    clear(n, m+1,N,M);
 }
 
 int main(void){
@@ -21,7 +40,7 @@ int main(void){
         }
         for(int j=0;j<K;j++){
             int a,b;
-            scanf("%d %d", &b, &a);
+            scanf("%d %d", &a, &b);
             A[b][a]=1; //배추세팅
         }
         //벌레세기
@@ -30,7 +49,7 @@ int main(void){
             for(int m=0;m<M;m++){
                 if(A[n][m]==1){
                     cnt++;
-                    clear(&A[n][m], n, m,N,M); //배추 소거
+                    clear(n,m,N,M); //배추 소거
                 }
             }
         }
