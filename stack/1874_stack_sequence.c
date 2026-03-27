@@ -28,27 +28,20 @@ int main(void){
     for(int i=0;i<n;i++){
         scanf("%d", &anstack[i]);
     }
-    for(int i=0,j=1;i<n,j<=n+1;i++){
-        while(anstack[i]>j){
+    for(int i=0,j=1;i<n;i++){
+        while(anstack[i]>=j){
             push(j++);
         }
-        if(anstack[i]==j){
-            push(j);
+        if(stack[top]==anstack[i]){
             pop();
-            break;
         }
-        if(anstack[i]<j){
-            if(stack[top]==j){
-                pop();
-                j++;
-            }
-            else{
-                printf("NO");
-                return 0;
-            }
+        else{
+            printf("NO\n");
+            return 0;
         }
+        
     }
-    for(int i=0;i<sol_top;i++){
+    for(int i=0;i<=sol_top;i++){
         printf("%c\n", sol[i]);
     }
     return 0;
