@@ -1,9 +1,9 @@
-## MAZE ESCAPE ADVENTURE
-⠀⢀⠤⣀⣀⣴⣶⣔⢂⠀⠀  i am a little mouse and i have to find my way out of a maze
-⠀⠸⠀⠀⠀⠻⠿⢿⣿⣿⢷⠀  the size of maze will be given (by using open source)
+
+⠀⢀⠤⣀⣀⣴⣶⣔⢂⠀⠀  Hi there? I am a mouse and I have to find my way out of a maze.
+⠀⠸⠀⠀⠀⠻⠿⢿⣿⡇⠀  The size of the maze is given, and the maze is generated using open-source code.
 ⢀⣸⠀⢠⠀⠀⠀⢠⠀⣗⡂   
-⠀⢚⣄⢀⠀⠛⠀⢀⡰⢷⠀  first, i choose the algorithm : DFS/BFS
-⠀⢠⢎⣿⣿⣭⣽⣿⡄⠜⠀  second, i choose the data structure : stack/deque
-⠀⠘⢺⣿⣿⣿⣿⣿⡇⠀⠀ third, i choose the search order sequence : up/down/left/right
-⠀⠀⠐⠤⠤⠼⠤⠤⠄⠀I used background colors printed with ANSI escape sequences to visualize the route. #feat.seojilee
+⠀⢚⣄⢀⠀⠛⠀⢀⡰⢷⠀  first, I choose the algorithm : DFS/BFS
+⠀⢠⢎⣿⣿⣭⣽⣿⡄⠜⠀  second, I choose the data structure : stack/queue (by deque)
+⠀⠘⢺⣿⣿⣿⣿⣿⡇⠀⠀ third, I choose the search order sequence : up/down/left/right
+⠀⠀⠐⠤⠤⠼⠤⠤⠄⠀I used background colors with ANSI escape sequences to visualize the route.
     Enjoy :)
